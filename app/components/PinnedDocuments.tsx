@@ -80,10 +80,11 @@ function PinnedDocuments({
   }, [pins]);
 
   const sensors = useSensors(
+    // A drag starts only once the pointer has moved, so holding the button
+    // still on a card behaves like a click rather than starting a drag.
     useSensor(PointerSensor, {
       activationConstraint: {
-        delay: 100,
-        tolerance: 5,
+        distance: 5,
       },
     }),
     useSensor(KeyboardSensor, {

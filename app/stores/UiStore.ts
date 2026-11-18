@@ -410,6 +410,9 @@ class UiStore {
       this.secondaryRightSidebar = panel;
     } else {
       this.rightSidebar = panel;
+      // Persist so that a later save of other UI state doesn't write back a
+      // stale panel, which would reopen the sidebar on reload.
+      this.persist();
     }
   };
 
